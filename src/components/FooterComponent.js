@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Media } from 'reactstrap';
-
 
 class Footer extends Component {
 
