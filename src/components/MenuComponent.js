@@ -40,7 +40,7 @@ class Menu extends Component {
 				</div>
 				
 
-
+			
 				<div className="row justify-content-center">
 					<Dishdetail selectedDish={this.state.selectedDish} />
 				</div>

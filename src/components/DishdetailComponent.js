@@ -21,22 +21,22 @@ class Dishdetail extends Component  {
 			);
 	}
 
-
+	renderComments(dish) {
+				const allComments = dish.comments.map((individ) => {
+					return(
+						<li key={individ.id}> {individ.comment} <br/> -- {individ.author},&nbsp;  
+						{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: '2-digit'}).
+						format(new Date(individ.date))}</li>
+					);
+			});
+				return allComments;
+	}
 		
+
 	render() {
 
 		if (this.props.selectedDish == null) {return(<div></div>)}
 		else {
-
-			const allComments = this.props.selectedDish.comments.map((individ) => {
-				return(
-					<li key={individ.id}> {individ.comment} <br/> -- {individ.author},&nbsp;  
-					{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: '2-digit'}).
-					format(new Date(individ.date))}</li>
-				);
-			});
-
-
 			return(
 	
 			<div className="row justify-content-center">
@@ -45,8 +45,9 @@ class Dishdetail extends Component  {
 				</div>
 
 				<div className="col-12 col-md-5 m-1">
-					<ul className="list-unstyled"><h4>Comments</h4>
-						{allComments}
+					<ul className="list-unstyled">
+						<h4>Comments</h4>
+						{this.renderComments(this.props.selectedDish)}
 					</ul>
 				</div>
 			</div>
