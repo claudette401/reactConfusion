@@ -17,7 +17,7 @@
 }
 
 .App-link {
-  color: #61dafb;
+  color: #218c74;
 }
 
 @keyframes App-logo-spin {
@@ -29,16 +29,17 @@
   }
 }
 
+li {padding: 10px;}
+
+.testingThisOne {border: 2px solid red;}
 
 .footer {
   background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  min-height: 70vh;
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.footer-section {border: 1px solid white; padding: 15px; margin: 10px;}
+.footer-section {border: 1px solid white; padding: 15px; margin: 10px; display: inline;}
+.footer-section h2 {display: inline-block;}
+
