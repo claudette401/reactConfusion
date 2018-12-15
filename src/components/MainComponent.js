@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand } from 'reactstrap';
-import Menu from './MenuComponent';
-import Dishdetail from './DishdetailComponent';
+import Menu from './FxMenuComponent.js';
+import Dishdetail from './FxDishdetailComponent.js';
 import { DISHES } from '../shared/dishes';
 
 class Main extends Component {
@@ -15,7 +15,7 @@ class Main extends Component {
 		};
 	}
 
-	componentDidMount() {console.log("Main componentDidMount")}
+	componentDidMount() {console.log("Main codmponentDidMount")}
 
 	onDishSelect(dishId) {this.setState({selectedDish: dishId});}
 
