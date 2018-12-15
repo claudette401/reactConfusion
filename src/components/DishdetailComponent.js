@@ -5,8 +5,6 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 class Dishdetail extends Component  {
 	constructor(props) {
 		super(props);
-
-
 	}
 
 	renderDish(dish) {
@@ -25,8 +23,7 @@ class Dishdetail extends Component  {
 				const allComments = dish.comments.map((individ) => {
 					return(
 						<li key={individ.id}> {individ.comment} <br/> -- {individ.author},&nbsp;  
-						{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: '2-digit'}).
-						format(new Date(individ.date))}</li>
+						{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: '2-digit'}).format(new Date(individ.date))}</li>
 					);
 			});
 				return allComments;
