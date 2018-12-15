@@ -1,72 +1,51 @@
-import React, { Component } from 'react';
-
-class Footer extends Component {
-
-	constructor(props) {
-		super(props);
-
-			var linkContent =	
-				<ul className="list-unstyled">
-	                <li><a href="index.html">Home</a></li>
-	                <li><a href="aboutus.html">About</a></li>
-	                <li><a href="index.html">Menu</a></li>
-	                <li><a href="index.html">Contact</a></li>
-	            </ul>;
-
-			var	addressContent =
-				<ul className="list-unstyled">
-					<li>121 Clear Water Bay Road</li>
-	                <li>Clear Water Bay, Kowloon</li>
-	                <li>HONG KONG</li>
-	                <li>Tel.: 852 1234 5678</li>
-	                <li>Fax: 852 8765 4321</li>
-	                <li>Email: <a href="mailto:confusion@food.net">confusion@food.net</a></li>
-	            </ul>;
-
-	       var	connectContent =
-	       		<ul className="list-unstyled">
-	       			<li><a href="http://google.com/+">Google+</a></li>
-		            <li><a href="http://www.facebook.com/profile.php?id=">Facebook</a></li>
-		            <li><a href="http://www.linkedin.com/in/">LinkedIn</a></li>
-		            <li><a href="http://twitter.com/">Twitter</a></li>
-		            <li><a href="http://youtube.com/">YouTube</a></li>
-		            <li><a href="mailto:">Mail</a></li>
-		        </ul>;
-	
-		this.state = {
-				sections: [
-					{id:0,cols:'col-12 col-md-3 footer-section',title:'Links', contents: linkContent},
-					{id:1,cols:'col-12 col-md-5 footer-section',title:'Our Address',contents: addressContent},
-					{id:2,cols:'col-12 col-md-3 footer-section',title:'Connect',contents: connectContent}
-				]
-		}
-	};
-	
-
-	render() {
-		const footer = this.state.sections.map((section) => {
-			return (
-					<div className={section.cols} key={section.id} >
-						<h2>{section.title}</h2>
-						{section.contents}
-					</div>
-
-			);
-		});
-
-		return (
-			<div className="container-fluid">
-				<div className="row footer justify-content-center">
-					{footer}
-				</div>
-			</div>
-
-		)
-	};
+import React from 'react';
 
 
+function Footer(props) {
+    return(
+    <div className="footer">
+        <div className="container">
+            <div className="row justify-content-center">             
+                <div className="col-4 offset-1 col-sm-2">
+                    <h5>Links</h5>
+                    <ul className="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Menu</a></li>
+                        <li><a href="contactus.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div className="col-7 col-sm-5">
+                    <h5>Our Address</h5>
+                    <address>
+		              121, Clear Water Bay Road<br />
+		              Clear Water Bay, Kowloon<br />
+		              HONG KONG<br />
+		              <i className="fa fa-phone fa-lg"></i>: +852 1234 5678<br />
+		              <i className="fa fa-fax fa-lg"></i>: +852 8765 4321<br />
+		              <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:confusion@food.net">
+                         confusion@food.net</a>
+                    </address>
+                </div>
+                <div className="col-12 col-sm-4 align-self-center">
+                    <div className="text-center">
+                        <a className="btn btn-social-icon btn-google" href="http://google.com/+"><i className="fa fa-google-plus"></i></a>
+                        <a className="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i className="fa fa-facebook"></i></a>
+                        <a className="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i className="fa fa-linkedin"></i></a>
+                        <a className="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i className="fa fa-twitter"></i></a>
+                        <a className="btn btn-social-icon btn-google" href="http://youtube.com/"><i className="fa fa-youtube"></i></a>
+                        <a className="btn btn-social-icon" href="mailto:"><i className="fa fa-envelope-o"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div className="row justify-content-center">             
+                <div className="col-auto">
+                    <p>© Copyright 2018 Ristorante Con Fusion</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    )
 }
-
-
 
 export default Footer;
