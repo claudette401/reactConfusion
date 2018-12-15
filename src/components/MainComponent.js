@@ -15,9 +15,12 @@ class Main extends Component {
 		};
 	}
 
+	componentDidMount() {console.log("Main componentDidMount")}
+
 	onDishSelect(dishId) {this.setState({selectedDish: dishId});}
 
 	render() {
+		console.log("Main Component render has been invoked");
 	    return (
 	      <div>
 	        <Navbar dark color="primary">

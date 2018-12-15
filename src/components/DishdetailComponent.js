@@ -7,6 +7,9 @@ class Dishdetail extends Component  {
 		super(props);
 	}
 
+	componentDidMount() {console.log("Dishdetail componentDidMount")}
+	componentDidUpdate() {console.log("Dishdetail componentDidUpdate")}
+
 	renderDish(dish) {
 			return(
 				<Card>
@@ -31,6 +34,7 @@ class Dishdetail extends Component  {
 		
 
 	render() {
+			console.log("Dishdetail Component render has been invoked");
 			if (this.props.dish == null) {return(<div></div>)}
 			else {
 				return( 
