@@ -10,7 +10,7 @@ class Dishdetail extends Component  {
 	renderDish(dish) {
 			return(
 				<Card>
-					<CardImg width="100" src={dish.image} alt={dish.name} />
+					<CardImg width="100" src={dish.image} alt={this.props.dish.name} />
 					<CardBody>
 						<CardTitle>{dish.name}</CardTitle>
 						<CardText>{dish.description}</CardText>
@@ -23,7 +23,7 @@ class Dishdetail extends Component  {
 				const allComments = dish.comments.map((individ) => {
 					return(
 						<li key={individ.id}> {individ.comment} <br/> -- {individ.author},&nbsp;  
-						{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'long', day: '2-digit'}).format(new Date(individ.date))}</li>
+						{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(individ.date)))}</li>
 					);
 			});
 				return allComments;
@@ -31,27 +31,28 @@ class Dishdetail extends Component  {
 		
 
 	render() {
+			if (this.props.dish == null) {return(<div></div>)}
+			else {
+				return( 
+					<div className="container">
+						<div className="row justify-content-center">
+							<div className="col-12 col-md-5 m-1">
+								{this.renderDish(this.props.dish)}
+							</div>
 
-		if (this.props.selectedDish == null) {return(<div></div>)}
-		else {
-			return(
-	
-			<div className="row justify-content-center">
-				<div className="col-12 col-md-5 m-1">
-					{this.renderDish(this.props.selectedDish)}
-				</div>
+							<div className="col-12 col-md-5 m-1">
+								<ul className="list-unstyled">
+									<h4>Comments</h4>
+									{this.renderComments(this.props.dish)}
+								</ul>
+							</div>
+						</div>
+					</div>
+				)
+			}
 
-				<div className="col-12 col-md-5 m-1">
-					<ul className="list-unstyled">
-						<h4>Comments</h4>
-						{this.renderComments(this.props.selectedDish)}
-					</ul>
-				</div>
-			</div>
-		
-		)}
 
-	};
+	}
 }
 
 
