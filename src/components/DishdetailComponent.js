@@ -8,7 +8,7 @@ class Dishdetail extends Component  {
 	}
 
 	componentDidMount() {console.log("Dishdetail componentDidMount")}
-	componentDidUpdate() {console.log("Dishdetail componentDidUpdate")}
+	componentDidUpdate() {console.log("Dishdetail componentDidMount")}
 
 	renderDish(dish) {
 			return(

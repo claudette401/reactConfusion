@@ -1,6 +1,6 @@
 import React from 'react';
-import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
-
+import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle, Breadcrumb, BreadcrumbItem } from 'reactstrap';
+import { Link } from 'react-router-dom';
 
 
 
@@ -28,10 +28,21 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 		
 	const Dishdetail = (props) => {
 
-			if (props.dish == null) {return(<div></div>)}
-			else {
+			if (props.dish != null) {
 				return( 
 					<div className="container">
+						<div className="row">
+							<Breadcrumb>
+								<BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>	
+								<BreadcrumbItem><Link to='/menu'>Menu</Link></BreadcrumbItem>
+								<BreadcrumbItem active>{props.dish.name}</BreadcrumbItem>
+							</Breadcrumb>
+							<div className="col-12">
+								<h3>{props.dish.name}</h3>
+								<hr/>
+							</div>
+						</div>
+
 						<div className="row justify-content-center">
 							<div className="col-12 col-md-5 m-1">
 								<RenderDish dish={props.dish} />
@@ -40,7 +51,7 @@ import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 're
 							<div className="col-12 col-md-5 m-1">
 								<ul className="list-unstyled">
 									<h4>Comments</h4>
-									<RenderComments comments={props.dish.comments} />
+									<RenderComments comments={props.comments} />
 								</ul>
 							</div>
 						</div>
