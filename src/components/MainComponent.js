@@ -14,13 +14,11 @@ class Main extends Component {
 
 		this.state = {
 			dishes: DISHES,
-			selectedDish: null
 		};
 	}
 
 	componentDidMount() {console.log("Main codmponentDidMount")}
 
-	onDishSelect(dishId) {this.setState({selectedDish: dishId});}
 
 	render() {
 
@@ -41,8 +39,7 @@ class Main extends Component {
 	      		<Redirect to="/home" />
 	      	</Switch>
 
-	        <Menu dishes={this.state.dishes} 
-	        	onClick={(dishId) => this.onDishSelect(dishId)} />
+
 
 	        <Dishdetail dish={this.state.dishes.filter((dish) => dish.id === this.state.selectedDish)[0]} />
 
