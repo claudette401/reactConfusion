@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Navbar, NavbarBrand } from 'reactstrap';
+import Home from './HomeComponent.js';
 import Header from './HeaderComponent';
 import Footer from './FooterComponent';
 import Menu from './FxMenuComponent.js';
 import Dishdetail from './FxDishdetailComponent.js';
 import { DISHES } from '../shared/dishes';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 class Main extends Component {
 
@@ -22,10 +23,23 @@ class Main extends Component {
 	onDishSelect(dishId) {this.setState({selectedDish: dishId});}
 
 	render() {
+
+		const HomePage = () => {
+			return(
+				<Home />
+			);
+		}
+
 		console.log("Main Component render has been invoked");
 	    return (
 	      <div>
 	      	<Header />
+
+	      	<Switch>
+	      		<Route path="/home" component={HomePage} />
+	      		<Route exact path="/menu" component={ () => <Menu dishes={this.state.dishes} />} />
+	      		<Redirect to="/home" />
+	      	</Switch>
 
 	        <Menu dishes={this.state.dishes} 
 	        	onClick={(dishId) => this.onDishSelect(dishId)} />
