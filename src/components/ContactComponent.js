@@ -25,7 +25,7 @@ class Contact extends Component {
             <div className="container">
                 <div className="row">
                     <Breadcrumb>
-                        <BreadcrumbItem><Link to='/home'>sHome</Link></BreadcrumbItem>
+                        <BreadcrumbItem><Link to='/home'>Home</Link></BreadcrumbItem>
                         <BreadcrumbItem active> &nbsp; Contact Us</BreadcrumbItem>
                     </Breadcrumb>
                     <div className="col-12">
