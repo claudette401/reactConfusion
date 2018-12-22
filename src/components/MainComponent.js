@@ -20,9 +20,7 @@ const mapStateToProps = state => {
 
 class Main extends Component {
 
-	constructor(props) {
-		super(props);
-	}
+
 
 	componentDidMount() {console.log("Main codmponentDidMount")}
 

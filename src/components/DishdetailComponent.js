@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Card, CardImg, CardImgOverlay, CardText, CardBody, CardTitle } from 'reactstrap';
-
+import CommentForm from './CommentForm.js';
 
 class Dishdetail extends Component  {
 	constructor(props) {
@@ -49,6 +49,8 @@ class Dishdetail extends Component  {
 									<h4>Comments</h4>
 									{this.renderComments(this.props.dish)}
 								</ul>
+
+								<CommentForm />
 							</div>
 						</div>
 					</div>
