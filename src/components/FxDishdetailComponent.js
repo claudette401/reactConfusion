@@ -18,22 +18,21 @@ class CommentForm extends Component {
         	isModalOpen: false
         }
 
-        this.handleSubmit = this.handleSubmit.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
         this.handleComment = this.handleComment.bind(this);
     }
 
-    handleSubmit(values) {
-    	console.log("Current State is: " + JSON.stringify(values));
-    	alert("Current State is: " + JSON.stringify(values));
-    }
+
 
     toggleModal() {
 		this.setState (		{isModalOpen: !this.state.isModalOpen}	);
 	}
 
-	handleComment() {
+	handleComment (values) {
 		this.toggleModal();
+		console.log("Current State is: " + JSON.stringify(values));
+    	alert("Current State is: " + JSON.stringify(values));
+		this.props.addComment(this.props.dishId, values.rating, values.yourname, values.message);
 	}
 
 
@@ -46,7 +45,7 @@ class CommentForm extends Component {
 		    <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
 	        	<ModalHeader toggle={this.toggleModal}>Create a Comment</ModalHeader>
 	        	<ModalBody>
-	                <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+	                <LocalForm onSubmit={(values) => this.handleComment(values)}>
 
 	                	<Row className="form-group">
 	                		<Label htmlFor="rating" md={3}>Rating</Label>
@@ -105,7 +104,7 @@ class CommentForm extends Component {
 			);
 	}
 
-	function RenderComments({comments}) {
+	function RenderComments({comments, addComment, dishId}) {
 				const allComments = comments.map((aDish) => {
 					return(
 						<li key={aDish.id}> {aDish.comment} <br/> -- {aDish.author},&nbsp;  
@@ -141,10 +140,10 @@ class CommentForm extends Component {
 							<div className="col-12 col-md-5 m-1">
 								<ul className="list-unstyled">
 									<h4>Comments</h4>
-									<RenderComments comments={props.comments} />
+									<RenderComments comments={props.comments} addComment={props.addComment} dishId={props.dish.id} />
 								</ul>
 
-						<CommentForm />
+							<CommentForm addComment={props.addComment} dishId={props.dish.id} />
 							</div>
 						</div>
 					</div>
