@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 
 
+
 class Contact extends Component {
 
     constructor(props) {
@@ -84,8 +85,7 @@ class Contact extends Component {
 
                             <Row className="form-group">
                                 <Label htmlFor="telnum" md={2}>Telephone:</Label>
-                                <Col md={10}>
-                                <Control.text model=".telnum"  id="telnum" name="telnum" placeholder="Telephone Number" className="form-control" /></Col>
+                                <Col md={10}><Control.text model=".telnum"  id="telnum" name="telnum" placeholder="Telephone Number" className="form-control" /></Col>
                             </Row>
                             
                             <Row className="form-group">
