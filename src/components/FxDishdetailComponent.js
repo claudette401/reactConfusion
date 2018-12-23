@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent';
 import { baseUrl } from '../shared/baseUrl.js';
-
+import { FadeTransform, Fade, Stagger } from 'react-animation-components';
 
 
 const required = (val) => val && val.length;
@@ -96,25 +96,39 @@ class CommentForm extends Component {
 
 	function RenderDish({dish}) {
 			return(
-				<Card>
-					<CardImg width="100" src={baseUrl + dish.image} alt={dish.name} />
-					<CardBody>
-						<CardTitle>{dish.name}</CardTitle>
-						<CardText>{dish.description}</CardText>
-					</CardBody>
-				</Card>
+				<FadeTransform in transformProps={{ exitTransform: 'scale(0.5) translateY(-50%)' }}>
+					<Card>
+						<CardImg width="100" src={baseUrl + dish.image} alt={dish.name} />
+						<CardBody>
+							<CardTitle>{dish.name}</CardTitle>
+							<CardText>{dish.description}</CardText>
+						</CardBody>
+					</Card>
+				</FadeTransform>
 			);
 	}
 
 	function RenderComments({comments, postComment, dishId}) {
-				const allComments = comments.map((aDish) => {
-					return(
-						<li key={aDish.id}> {aDish.comment} <br/> -- {aDish.author},&nbsp;  
-						{new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(aDish.date)))}</li>
-						
-					);
-			});
-				return allComments;
+			if (comments !=null)
+				return(
+					<div className="col-12 col-md-5 m-1">
+						<h4>Comments</h4>
+						<ul className="list-unstyled">
+							<Stagger in>
+								{comments.map((aDish) => {
+									return(
+										<Fade in>
+										<li key={aDish.id}> {aDish.comment} <br/> -- {aDish.author},&nbsp; {new Intl.DateTimeFormat('en-US', {year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(aDish.date)))}</li>	
+										</Fade>
+									);
+								})}
+							</Stagger>
+						</ul>
+
+						<CommentForm postComment={postComment} dishId={dishId} />
+
+					</div>
+				);
 	}
 		
 	const Dishdetail = (props) => {
@@ -155,15 +169,9 @@ class CommentForm extends Component {
 							<div className="col-12 col-md-5 m-1">
 								<RenderDish dish={props.dish} />
 							</div>
+							
+							<RenderComments comments={props.comments} postComment={props.postComment} dishId={props.dish.id} />
 
-							<div className="col-12 col-md-5 m-1">
-								<ul className="list-unstyled">
-									<h4>Comments</h4>
-									<RenderComments comments={props.comments} postComment={props.postComment} dishId={props.dish.id} />
-								</ul>
-
-							<CommentForm postComment={props.postComment} dishId={props.dish.id} />
-							</div>
 						</div>
 					</div>
 				);
