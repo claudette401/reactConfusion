@@ -52,9 +52,9 @@ class CommentForm extends Component {
 		                    <Col md={9}>
 	                            <Control.select model=".rating" className="form-control" name="rating" defaultValue="5">
 	                                <option>1</option>
-	                                <option>2</option>
+	                                <option>b</option>
 	                                <option>3</option>
-	                                <option>4</option>
+	                                <option>d</option>
 	                                <option>5</option>
 	                            </Control.select>
 	                        </Col>

@@ -1,5 +1,4 @@
 import * as ActionTypes from './ActionTypes';
-import { DISHES } from '../shared/dishes';
 import { baseUrl } from '../shared/baseUrl.js';
 
 export const addComment = (comment) => ({
@@ -13,7 +12,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
 		dishId: dishId,
 		rating: rating,
 		author: author,
-		comment, comment
+		comment: comment
 	};
 	newComment.date = new Date().toISOString();
 

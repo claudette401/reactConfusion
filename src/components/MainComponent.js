@@ -6,7 +6,6 @@ import Menu from './FxMenuComponent.js';
 import Dishdetail from './FxDishdetailComponent.js';
 import Contact from './ContactComponent';
 import About from './AboutComponent.js';
-import Loading from './LoadingComponent.js';
 import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { postComment, fetchDishes, fetchComments, fetchPromos } from '../redux/ActionCreators.js';
@@ -60,7 +59,7 @@ class Main extends Component {
 
 		const DishWithId = ({match}) => {
 			return(
-				<Dishdetail 
+				<Dishdetail  
 					dish={this.props.dishes.dishes.filter((dish) => dish.id === parseInt(match.params.dishId, 10)) [0]} 
 					isLoading={this.props.dishes.isLoading}
 					errMess={this.props.dishes.errMess}
@@ -76,7 +75,7 @@ class Main extends Component {
 	      <div>
 	      	<Header />
 
-	      	
+
 	      	<TransitionGroup>
 	      		<CSSTransition key={this.props.location.key} classNames="page" timeout={300} >
 			      	<Switch>
